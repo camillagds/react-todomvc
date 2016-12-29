@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - '0.11'
+  - '0.10'
+  - "6"
+  - "6.1"
+  - "5.11"
+os:
+  - linux
+  - osx
+install:
+  - npm install
+scripts:
+  "start": "node server.js"
+deploy:
+  provider: heroku
+  api_key: fa60f88e-abe4-496d-aa9f-dd8e158151a6
+  app: react-todomvc-lobinhaxd
