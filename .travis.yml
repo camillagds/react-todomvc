@@ -13,5 +13,6 @@ before_install:
   - curl -l http://127.0.0.1
 script:
   - docker-compose up -d
+  - sleep 5
   - curl -l http://127.0.0.1:8080
 
