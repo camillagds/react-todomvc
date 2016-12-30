@@ -3,19 +3,14 @@ node_js:
   - "6"
   - "6.1"
   - "5.11"
-os: 
-  - linux
-#  - osx
-branches:
-  - master
-install:
-  - npm install
-  - docker build -t react-todomvc:1.0.0 .
+services:
+  - docker
+before_install:
+  - docker build -t lobinhaxd/react .
+  - docker run -d -p 127.0.0.1:80:8080 lobinhaxd/react
+  - docker ps -a
+  - curl -l http://127.0.0.1
 script:
-  - node server.js
-  - docker-compose up
-deploy:
-  skip_cleanup: true
-  provider: heroku
-  api_key: fa60f88e-abe4-496d-aa9f-dd8e158151a6
-  app: react-todomvc-lobinhaxd
+  - docker-compose up -d
+  - curl -l http://127.0.0.1:8080
+
