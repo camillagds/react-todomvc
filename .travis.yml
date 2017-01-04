@@ -1,4 +1,7 @@
 language: node_js
+env:
+  global:
+  - SCALE=2
 matrix:
   include:
   - node_js: '5.11'
@@ -18,17 +21,18 @@ before_install:
 install:
   - npm test
   - npm install
-after_install:
   - docker run -d -p 8080:8080 --name app lobinhaxd/react
+before_script:
   - sleep 5
   - docker ps -a
   - curl -l http://localhost:8080
-  = docker rm -f app
+  - docker rm -f app
 script:
   - docker-compose up -d nginx-proxy
-  - docker-compose scale web=2
+  - docker-compose scale web=$SCALE
   - sleep 5
   - sh test_curl.sh
+  
 after_script:
   - docker rm $(docker ps -a -q)
 
