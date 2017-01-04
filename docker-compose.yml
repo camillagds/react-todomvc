@@ -8,7 +8,7 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
   web:
-    image: lobinhaxd/react
+    image: $REPO
 	container_name: web
 	environment:
       - VIRTUAL_HOST=web.local
