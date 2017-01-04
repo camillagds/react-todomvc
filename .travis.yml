@@ -18,6 +18,8 @@ services:
   - docker
 before_install:
   - docker build -t lobinhaxd/react .
+services:
+  - docker
 install:
   - npm test
   - npm install
@@ -28,7 +30,7 @@ before_script:
   - curl -l http://localhost:8080
   - docker rm -f app
 script:
-  - docker-compose up -d nginx-proxy
+  - docker-compose -p $REPO up -d nginx-proxy
   - docker-compose scale web=$SCALE
   - sleep 5
   - sh test_curl.sh
