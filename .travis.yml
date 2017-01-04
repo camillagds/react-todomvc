@@ -25,7 +25,7 @@ before_install:
 services:
   - docker
 install:
-  - npm test
+  - npm install-test
   - npm install
   - docker run -d -p 8080:8080 --name app lobinhaxd/react
 before_script:
