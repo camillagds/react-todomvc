@@ -5,6 +5,8 @@ sudo: required
 language: node_js
 env:
   global:
+  - COMMIT=${TRAVIS_COMMIT::8}
+  - REPO=camillagds/memory-game
   - SCALE=2
 matrix:
   include:
@@ -38,7 +40,7 @@ script:
   - docker-compose -p $REPO up -d nginx-proxy
   - docker-compose scale web=$SCALE
   - sleep 5
-  - sh test_curl.sh
+  - chmod +x test_curl.sh && sh test_curl.sh
   
 after_script:
   - docker rm -f $(docker ps -a -q)
