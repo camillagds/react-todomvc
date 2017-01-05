@@ -5,7 +5,7 @@ var app = require('../server'),
   
 describe('GET /', function(){
   before(function() {
-      var portapp = process.env.PORT || 8080;
+      var port = process.env.PORT || 8080;
       app.set('port', port);
       var server = http.createServer(app);
       server.listen(app.get('port'));
