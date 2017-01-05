@@ -18,6 +18,15 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
+var count = 0
+socket.on('connection', function(client) {
+    count++;
+    client.broadcast({count:count})
+    client.on('disconnect', function(){
+        count--;
+    })
+})
+
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
 });
