@@ -2,7 +2,6 @@ os:
   - linux
 dist: trusty
 sudo: required
-language: node_js
 env:
   global:
   - SCALE=2
@@ -26,7 +25,8 @@ services:
   - docker
 install:
   - npm install
-  - npm install  --dev
+  - npm install --only=dev
+  - fuser -k 8080/tcp   
   - npm test
   - docker run -d -p 8080:8080 --name app lobinhaxd/react
 before_script:
