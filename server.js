@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var io = require('socket.io').listen(7777);
 var count = 0
 
 // set the port of our application
@@ -20,26 +19,7 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
-io.sockets.on('connection', function(socket) {
-    count++;
-    io.sockets.emit('message', { count: count });
-
-    io.sockets.on('disconnect', function(){
-        count--;
-        io.sockets.emit('message', { count: count });
-    })
-});
-
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
-	io.sockets.on('connection', function(socket) {
-    	count++;
-    	io.sockets.emit('message', { count: count });
-
-    	io.sockets.on('disconnect', function(){
-    	    count--;
-    	    io.sockets.emit('message', { count: count });
-    	})
-	});
 });
 
