@@ -7,11 +7,13 @@ describe('GET /', function(){
       var port = '8080';
       app.set('port', port);
       var server = http.createServer(app);
-      server.listen(port);
+      server.listen(app.get('port'), function(){            
+		console.log('Express server listening on port ' + app.get('port')); 
+	});
   });
 
   it('should return a 200 status code', function (done){
-    http.get({ host: 'localhost', port: 8080 }, function(res) {
+    http.get({ host: 'localhost', port: app.get('port') }, function(res) {
       assert.deepEqual(res.statusCode, 200);
       done();
     }).on('error', function(e) {

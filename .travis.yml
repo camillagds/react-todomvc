@@ -2,6 +2,7 @@ os:
   - linux
 dist: trusty
 sudo: required
+language: node_js
 env:
   global:
   - SCALE=2
