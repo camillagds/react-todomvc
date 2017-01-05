@@ -37,7 +37,7 @@ before_script:
   - curl -l http://localhost:8080
   - docker rm -f app
 script:
-  - docker-compose -p $REPO up -d nginx-proxy
+  - docker-compose up -d nginx-proxy
   - docker-compose scale web=$SCALE
   - sleep 5
   - chmod +x test_curl.sh && sh test_curl.sh
