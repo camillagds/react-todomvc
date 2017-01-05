@@ -11,7 +11,7 @@ describe('GET /', function(){
   });
 
   it('should return a 200 status code', function (done){
-    http.get({ host: '0.0.0.0', port: 8080 }, function(res) {
+    http.get({ host: 'localhost', port: 8080 }, function(res) {
       assert.deepEqual(res.statusCode, 200);
       done();
     }).on('error', function(e) {
