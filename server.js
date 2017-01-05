@@ -32,5 +32,14 @@ io.sockets.on('connection', function(socket) {
 
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
+	io.sockets.on('connection', function(socket) {
+    	count++;
+    	io.sockets.emit('message', { count: count });
+
+    	io.sockets.on('disconnect', function(){
+    	    count--;
+    	    io.sockets.emit('message', { count: count });
+    	})
+	});
 });
 
