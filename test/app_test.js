@@ -1,24 +1,35 @@
-var app = require('../server'),
-  assert = require('assert'),
-  http = require('http');
+var server = require('./server.js');
+var request = require('request');
+var expect = require('chai').expect;
 
-  
-describe('GET /', function(){
-  before(function() {
-      var port = process.env.PORT || 8080;
-      app.set('port', port);
-      var server = http.createServer(app);
-      server.listen(app.get('port'));
+describe('server response', function () {
+  before(function () {
+    server.listen(8080);
   });
 
-  it('should return a 200 status code', function (done){
-	var portapp = process.env.PORT || 8080;
-    http.get({ host: '127.0.0.1', port: 'portapp' }, function(res) {
-      assert.deepEqual(res.statusCode, 200);
-      done();
-    }).on('error', function(e) {
-      throw new Error(e);
-    });
+it('should return 400', function (done) {
+  request.get('http://localhost:8080', function (err, res, body){
+    expect(res.statusCode).to.equal(400);
+    expect(res.body).to.equal('wrong header');
+    done();
   });
+});
 
+it('should return 200', function (done) {
+  var options = {
+    url: 'http://localhost:8080',
+    headers: {
+      'Content-Type': 'text/plain'
+    }
+  };
+  request.get(options, function (err, res, body) {
+    expect(res.statusCode).to.equal(200);
+    expect(res.body).to.equal('correct header');
+    done();
+  });
+});
+
+  after(function () {
+    server.close();
+  });
 });

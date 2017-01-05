@@ -22,4 +22,3 @@ app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
 });
 
-module.exports = app;
