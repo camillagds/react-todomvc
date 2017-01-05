@@ -8,6 +8,9 @@ env:
   - COMMIT=${TRAVIS_COMMIT::8}
   - REPO=camillagds/react
   - SCALE=2
+addons:
+  hosts:
+  - react.local
 matrix:
   include:
   - node_js: '5.11'
