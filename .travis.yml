@@ -41,7 +41,7 @@ script:
   - sh test_curl.sh
   
 after_script:
-  - docker rm $(docker ps -a -q)
+  - docker rm -f $(docker ps -a -q)
 
 deploy:
   - provider: heroku
