@@ -179,3 +179,8 @@ var app = app || {};
 	model.subscribe(render);
 	render();
 })();
+
+var socket = io.connect('http://localhost:8080');
+socket.on('message', function (data) {
+    console.log(data.count);
+});
