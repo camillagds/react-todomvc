@@ -6,7 +6,7 @@ language: node_js
 env:
   global:
   - COMMIT=${TRAVIS_COMMIT::8}
-  - REPO=camillagds/memory-game
+  - REPO=camillagds/react
   - SCALE=2
 matrix:
   include:
@@ -23,14 +23,14 @@ branches:
 services:
   - docker
 before_install:
-  - docker build -t lobinhaxd/react .
+  - docker build -t $REPO .
 services:
   - docker
 install:
   - npm install
   - npm install --only=dev
   - npm test
-  - docker run -d -p 8080:8080 --name app lobinhaxd/react
+  - docker run -d -p 8080:8080 --name app $REPO
 before_script:
   - sleep 5
   - docker ps -a
