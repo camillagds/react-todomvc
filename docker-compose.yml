@@ -10,4 +10,4 @@ services:
   web:
     image: $REPO
     environment:
-      - VIRTUAL_HOST=react.local
+      - VIRTUAL_HOST=$HOST
