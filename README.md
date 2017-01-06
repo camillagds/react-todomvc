@@ -35,7 +35,7 @@ React - TodoMVC
 3. **Deploy** | Instala a aplicação no Server de Produção
 4. **Validation** | Valida o deploy usando o Assertible
 
-### [![Service status](https://assertible.com/apis/24213304-c745-420f-8cc5-9bc4ea5013c9/status?api_token=3zsHNBwvKyKrL5iz)](https://assertible.com/dashboard#/services/24213304-c745-420f-8cc5-9bc4ea5013c9) Assertible
+### [![Service status](https://assertible.com/apis/24213304-c745-420f-8cc5-9bc4ea5013c9/status?api_token=Yfn9z5660h7i1B6I)](https://assertible.com/dashboard#/services/24213304-c745-420f-8cc5-9bc4ea5013c9) Assertible
 
 O Assertible ajuda a evitar que bugs o tornem produtivo automatizando testes manuais, executando afirmações contra ambientes de teste e integrando alertas em sua cadeia de ferramentas atual.
 
