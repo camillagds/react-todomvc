@@ -48,19 +48,25 @@ Heroku é uma aplicação cloud multi-linguagem que funciona como um PaaS. Ele c
 
 ## Ambiente para Desenvolvedores
 Abaixo esta os scripts para a instalação do docker para desenvolvimento.
+
 #### Windows
 https://github.com/camillagds/react-todomvc/blob/master/desenv-scripts/ms-desenv.ps1
 
 __*Atenção:*__
 * Rodar com nível administrativo
 * [É necessário habilitar a virtualização no Hyper-V usando o PowerShell](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-venable-virtualization-in-hyper-v)
+
 #### OS X
 https://github.com/camillagds/react-todomvc/blob/master/desenv-scripts/osx-desenv.sh
+
 __*Atenção:*__
 Rodar com nível administrativo
+
 #### Linux
+
 __CentOS__ - https://github.com/camillagds/react-todomvc/blob/master/desenv-scripts/centos-desenv.sh
 __Ubuntu__ - https://github.com/camillagds/react-todomvc/blob/master/desenv-scripts/ubuntu-desenv.sh
+
 ### Docker
 
 Crie um arquivo `.env` com o conteudo:
