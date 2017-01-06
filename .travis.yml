@@ -19,10 +19,6 @@ matrix:
     env: AMBIENTE=local
   - node_js: 6.1.0
     env: AMBIENTE=heroku
-branches:
-  only:
-  - master
-  - "/^(?i:staging)-.*$/"
 services:
 - docker
 before_install:
@@ -47,11 +43,7 @@ script:
 after_script:
 - docker rm -f $(docker ps -a -q)
 after_success:
-- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH;
-  fi`
-- docker push $REPO
-- mkdir out && zip -r out/memory-game-$TAG-$TRAVIS_BUILD_NUMBER-$TRAVIS_BRANCH.zip
-  . -x .* *.sh *.yml *.md node_modules Dockerfile desenv-scripts
+- mkdir out && git archive --format=zip HEAD -o out/memory-game-$TRAVIS_BUILD_NUMBER-$TRAVIS_BRANCH.zip
 deploy:
 - provider: releases
   skip_cleanup: true
@@ -71,4 +63,4 @@ deploy:
   on:
     repo: $REPO
     condition: $AMBIENTE=heroku
-    branch: $TRAVIS_BRANCH
+    all_branches: true
